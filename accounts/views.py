@@ -15,9 +15,9 @@ class SignUpView(APIView):
         name = data['name']
         phone = data['phone']
         password = data['password']
-        password1 = data['password1']
+        password2 = data['password2']
 
-        if password == password1:
+        if password == password2:
             if User.objects.filter(phone=phone).exists():
                 return Response({'error': 'phone number already exists'})
             else:

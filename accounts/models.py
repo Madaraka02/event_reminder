@@ -4,7 +4,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, phone_number, name, password=None):
+    def create_user(self, phone, name, password=None):
         if not phone:
             raise ValueError('Users Must have a phone number')
 
