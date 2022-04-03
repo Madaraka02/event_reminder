@@ -38,7 +38,8 @@ class Reminder(models.Model):
     # time of the reminder eg "8.00"
     time = models.TimeField()
     # date of the reminder eg "2022-04-01"
-    date_of_reminder = models.DateField()
+    start_of_reminder = models.DateField()
+    end_of_reminder = models.DateField(null=True)
     
 
 
