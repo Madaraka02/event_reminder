@@ -13,19 +13,19 @@ class SignUpView(APIView):
         data = self.request.data
 
         name = data['name']
-        phone_number = data['phone_number']
+        phone = data['phone']
         password = data['password']
         password1 = data['password1']
 
         if password == password1:
-            if User.objects.filter(phone_number=phone_number).exists():
+            if User.objects.filter(phone=phone).exists():
                 return Response({'error': 'phone number already exists'})
             else:
                 if len(password) < 6:
                     return Response({'error': 'password must be atleast 6 characters'})
 
                 else:
-                    user = User.objects.create_user(phone_number=phone_number, password=password, name=name)
+                    user = User.objects.create_user(phone=phone, password=password, name=name)
 
                     user.save()    
                     return Response({'success': 'User created successfully'})
