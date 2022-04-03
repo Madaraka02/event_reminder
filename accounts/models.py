@@ -19,7 +19,7 @@ class UserAccountManager(BaseUserManager):
         user = self.create_user(phone, name, password)    
         user.is_superuser = True
         user.is_staff = True
-        user.save
+        user.save()
         return user
 
 
@@ -39,7 +39,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.name
 
     def get_full_name(self):
-        return sefl.name
+        return self.name
 
     def get_short_name(self):
-        return sefl.name
+        return self.name

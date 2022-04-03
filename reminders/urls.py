@@ -10,6 +10,6 @@ from .views import *
 urlpatterns = [
     path('reminders/', ReminderView.as_view(), name="allreminders"),
     path('prescriptions/', PrescriptionView.as_view(), name="allprescriptions"),
-    path('reminders/<pk>/', UserReminderView.as_view(), name="userreminders"),
-    path('prescriptions/<pk>/', UserPrescriptionView.as_view(), name="userprescriptions"),
+    path('reminders/user/', UserReminderView.as_view(), name="userreminders"),
+    # path('prescriptions/<pk>/', UserPrescriptionView.as_view(), name="userprescriptions"),
 ]

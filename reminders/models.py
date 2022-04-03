@@ -19,7 +19,7 @@ class Doctor(models.Model):
 
 class Prescription(models.Model):
     # one user can have many prescriptions, but one prescription can only have one user
-    user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
     # medicine can belong to many users, and one user can have many prescriptions, but a prescription can only have one medicine
     medicine = models.ForeignKey(Medicine, related_name='medicine', on_delete=models.CASCADE)
     # enter the DOSAGE the prescription eg "1 tablet of asprin"
@@ -45,7 +45,7 @@ class Reminder(models.Model):
 
 
     def __str__(self):
-        return f'{self.time} on {self.date_of_reminder}'
+        return f'{self.time} on {self.start_of_reminder}'
 
     @property
     def reminder_period(self):
