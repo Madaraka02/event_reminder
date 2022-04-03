@@ -45,3 +45,8 @@ class Reminder(models.Model):
 
     def __str__(self):
         return f'{self.time} on {self.date_of_reminder}'
+
+    @property
+    def reminder_period(self):
+        remaining = (self.end_of_reminder - start_of_reminder).days
+        return remaining    
