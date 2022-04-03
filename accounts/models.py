@@ -37,3 +37,9 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.name
+
+    def get_full_name(self):
+        return sefl.name
+
+    def get_short_name(self):
+        return sefl.name
