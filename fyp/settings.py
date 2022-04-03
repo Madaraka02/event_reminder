@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL = True
+AUTH_USER_MODEL = 'users.UserAccount'
