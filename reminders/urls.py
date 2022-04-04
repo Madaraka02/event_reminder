@@ -21,6 +21,4 @@ urlpatterns = [
     path('prescriptions/<pk>/', PrescriptionView.as_view(), name="prescription"),
     #retrieve all medicines
     path('medicines/', MedicineListView.as_view(), name="medicines"),
-    # path('reminders/<str:pk>/', UserReminderView.as_view(), name="userreminders"),
-    # path('prescriptions/<pk>/', UserPrescriptionView.as_view(), name="userprescriptions"),
 ]
