@@ -18,7 +18,7 @@ urlpatterns = [
     #show all prescriptions and allow create
     path('prescriptions/', PrescriptionListView.as_view(), name="allprescriptions"),
     #retrieve prescription by id
-    path('prescriptions/<pk>/', PrescriptionView.as_view(), name="allprescriptions"),
+    path('prescriptions/<pk>/', PrescriptionView.as_view(), name="prescription"),
     #retrieve all medicines
     path('medicines/', MedicineListView.as_view(), name="medicines"),
     # path('reminders/<str:pk>/', UserReminderView.as_view(), name="userreminders"),
