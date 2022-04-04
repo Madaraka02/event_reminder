@@ -19,26 +19,48 @@ class ReminderView(RetrieveUpdateDestroyAPIView):
     serializer_class = ReminderSerializer
     permission_classes = (permissions.AllowAny, )
 
-class PrescriptionView(RetrieveAPIView):    
+class PrescriptionListView(ListCreateAPIView):    
     queryset = Prescription.objects.all()
     serializer_class = PrescriptionSerializer
     permission_classes = (permissions.AllowAny, )
 
 
-class UserReminderView(RetrieveAPIView):
+class MedicineListView(ListCreateAPIView):    
+    queryset = Medicine.objects.all()
+    serializer_class = MedicineSerializer
+    permission_classes = (permissions.AllowAny, )
+
+
+class PrescriptionView(RetrieveUpdateDestroyAPIView):    
+    queryset = Prescription.objects.all()
+    serializer_class = PrescriptionSerializer
+    permission_classes = (permissions.AllowAny, )
+
+
+# class PrescriptionView(RetrieveAPIView):    
+#     queryset = Prescription.objects.all()
+#     serializer_class = PrescriptionSerializer
+#     permission_classes = (permissions.AllowAny, )
+
+
+class UserReminderView(ListAPIView):
     serializer_class = ReminderSerializer
     permission_classes = (permissions.AllowAny, )
 
     def get_queryset(self):
         current_user_reminder = Reminder.objects.all()
-        return current_user_reminder
+        return Reminder.objects.all().filter(user=self.request.user)
 
-    def retrieve(self, request, *args, **kwargs):
-        params = kwargs
-        user_reminders =   Reminder.objects.filter(user=params['pk']) 
-        #user_reminders =   Reminder.objects.filter(user=request.user)   
-        serializer = ReminderSerializer(user_reminders, many=True)
-        return Response(serializer.data)
+    # def get_queryset(self):
+    #     current_user_reminder = Reminder.objects.all()
+    #     return current_user_reminder
+
+    # def retrieve(self, request, *args, **kwargs):
+    #     params = kwargs
+    #     user_reminders =   Reminder.objects.filter(user=params['pk']) 
+    #     #user_reminders =   Reminder.objects.filter(user=request.user)   
+    #     serializer = ReminderSerializer(user_reminders, many=True)
+    #     return Response(serializer.data)
 
 # class UserPrescriptionView(RetrieveAPIView):    
 #     queryset = Prescription.objects.filter(user=request.user)
